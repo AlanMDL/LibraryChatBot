@@ -1,9 +1,9 @@
 const prompt = 0;
 const input = 1;
 const output = 2;
-function main(){
+function main()
+{
 	var ioStream = [ //start 2d array
-		
 		[  //array[0] elements the prompts
 			"Hello, Welcome to the Library! Could I help you find a book?",
 			"Welcome to the Library! Are you looking for a book or shall I recommend one for you?",
@@ -17,40 +17,38 @@ function main(){
 		]
 	]; // end of 2D array
 	
- /*	for(i = 0; i < ioStream.length; i++){
-		for(j = 0; j < ioStream[i].length; j++){
-			console.log(ioStream[i][j]);
-		}
-	}
-*/ 
 	
+	// read input here to send to inputLine to begin
+	inputLine(input);
 }
 
+/*@Function: Splits up each word from the input and sends the word to compare.
+ *@param: input Line received 
+ *@Return: no return
+*/
 function inputLine(String input)
 {
-	//Splits up each word from the input parameter into an array of strings.
-    	var array = input.split("  ");
-
+    	var array = input.split("  "); 	//Splits up each word from the input parameter into an array of strings.
     	for(int i = 0; i < input.length; i++)
-   	 {
-    	//variable word will be used to equal each word from the array and call the compareWords Function passing in
-	//the word variable as a parameter
-    	var word = array[i];
-    	compareWords(word);
+   	 	{
+    		var word = array[i]; // word pulled from the array of words
+    		compareWords(word); 
     	}
-
 }
 
+/*@Function: Compares word sent in to see if it matches with any keywords
+ * if any key words match, call a certain function according to keyword that matches.
+ *@param: input Line received 
+ *@Return: Undecided
+*/
 function compareWords(word, ioStream)
 {
 	for(int i = 0; i < ioStream.length; i++)
 	{
-	//if the word is equal tfo a word from the input array
-	if(word == array[0][i][]
-	{
-	//TODO:finish this if statement
-	}
-
+		if(word == array[0][i]) //if the word is equal tfo a word from the input array
+		{
+			//TODO:finish this if statement
+		}
 	}
 	
 }
