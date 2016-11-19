@@ -1,9 +1,7 @@
 const PROMPT = 0;
-const KEYWORD= 1;
+const KEYWORD = 1;
 const OUTPUT = 2;
-function main()
-{
-	var ioStream = [ //start 2d array
+var ioStream = [ //start 2d array
 		[  //array[0] elements the prompts
 			"Hello, Welcome to the Library! Could I help you find a book?",
 			"Welcome to the Library! Are you looking for a book or shall I recommend one for you?",
@@ -16,10 +14,17 @@ function main()
 			"Alright, this is what I have found,"
 		]
 	]; // end of 2D array
-	
-	
-	// read input here to send to inputLine to begin
-	inputLine("Hello I am looking for a book called Harry Potter");
+
+//choose random index from the array of greeting from ioStream[prompt];
+var randomNumber = Math.floor( Math.random() * ( ioStream[PROMPT].length - 1) );
+
+function main()
+{
+    
+    //prompts the user with a random greeting and stores their response to input
+    var input = prompt(ioStream[PROMPT[randomNumber]]);
+
+	inputLine(input);//calls the inputLine function with the input as parameter
 }
 
 /*@Function: Splits up each word from the input and sends the word to compare.
@@ -28,13 +33,16 @@ function main()
 */
 function inputLine(input)
 {
-	var word;
-    var array = input.split("  "); 	//Splits up each word from the input parameter into an array of strings.
-    for(i = 0; i < input.length; i++)
-    {
-    	word = array[i]; // word pulled from the array of words
-    	compareWords(word); 
-	}
+    	var array = input.split("  "); 	//Splits up each word from the input parameter into an array of strings.
+    	
+        var word = "";//initializes word variable to blank
+
+        for(int i = 0; i < input.length; i++)
+   	 	{
+    		word = array[i];// word pulled from the array of words
+    		compareWords(word);//calls compareWords function with word as parameter
+    	}
+        
 }
 
 /*@Function: Compares word sent in to see if it matches with any keywords
@@ -42,23 +50,96 @@ function inputLine(input)
  *@param: input Line received 
  *@Return: Undecided
 */
-function compareWords(word, ioStream)
+function compareWords(word)
 {
-	for(i = 0; i < ioStream.length[KEYWORD]; i++)
+	for(int i = 0; i < ioStream[KEYWORD].length; i++)
 	{
-		if(word == array[KEYWORD][i]) //if the word is equal tfo a word from the input array
+        //for now lets assume keyword are for book searching....
+		if( word == ioStream[KEYWORD[i]] )//Compares word to each keyword in the array[input]
 		{
-			//TODO:finish this if statement
+		searchBook();//calls searchBook function to start book search
 		}
+
+        //need to add if statement for recommendation keywords
+
+        //need to add if statement for booking for rooms keyword
+
 	}
-	
+}
+
+function compareGenre()
+{
+
+}
+
+
+function recommendBook()
+{
+
+}
+
+
+
+function searchBook()
+{
+    var someBook = prompt("What book title are you looking for?");//prompts user and retrieves response
+    var array = someBook.split("  ");
+    var matches = 0;
+    var matchedBooks[100];
+
+    for(int i = 0; i < array.length;i++)
+    {
+        for(int j = 0; j < bookArray.length;j++)
+        {
+            if(array[i] == bookArray[j])
+            {
+                matches = matches + 1;
+                matchedBooks[i] = bookArray[j];
+            }
+        }
+    }
+    
+    if(matches > 1)
+    {    
+        console.log("There was more than 1 book found, outputting all matched books");
+        for(int i = 0; i < matchedBooks.length;i++)
+        {
+        console.log(matchedBooks(i));       
+        }
+    }
+    else if (matches == 1)
+    {
+        console.log(matchedBooks[matches]); 
+    }
 }
 	   
+function bookArray 
+{
+    var qrNumber = 0;
+    var genre = "";
+    var author = "";
+    var name = "";
+    var floor = 0;
+    var availability = true;
+}
+
+
+/* TODO LIST
+Create a class that holds data variables about book information called bookArray
+Finish searchBook function
+Finish 
+
+
+
+*/
+
+
+
+
 //pseudocode notes for hackathon/////////////////////////////////////
 	   /*
 	   
 	   main function() {
-
 do while loop
 {
 	inputline function
