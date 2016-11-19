@@ -1,6 +1,6 @@
-const prompt = 0;
-const input = 1;
-const output = 2;
+const PROMPT = 0;
+const KEYWORD= 1;
+const OUTPUT = 2;
 function main()
 {
 	var ioStream = [ //start 2d array
@@ -19,21 +19,22 @@ function main()
 	
 	
 	// read input here to send to inputLine to begin
-	inputLine(input);
+	inputLine("Hello I am looking for a book called Harry Potter");
 }
 
 /*@Function: Splits up each word from the input and sends the word to compare.
  *@param: input Line received 
  *@Return: no return
 */
-function inputLine(String input)
+function inputLine(input)
 {
-    	var array = input.split("  "); 	//Splits up each word from the input parameter into an array of strings.
-    	for(int i = 0; i < input.length; i++)
-   	 	{
-    		var word = array[i]; // word pulled from the array of words
-    		compareWords(word); 
-    	}
+	var word;
+    var array = input.split("  "); 	//Splits up each word from the input parameter into an array of strings.
+    for(i = 0; i < input.length; i++)
+    {
+    	word = array[i]; // word pulled from the array of words
+    	compareWords(word); 
+	}
 }
 
 /*@Function: Compares word sent in to see if it matches with any keywords
@@ -43,9 +44,9 @@ function inputLine(String input)
 */
 function compareWords(word, ioStream)
 {
-	for(int i = 0; i < ioStream.length; i++)
+	for(i = 0; i < ioStream.length[KEYWORD]; i++)
 	{
-		if(word == array[0][i]) //if the word is equal tfo a word from the input array
+		if(word == array[KEYWORD][i]) //if the word is equal tfo a word from the input array
 		{
 			//TODO:finish this if statement
 		}
