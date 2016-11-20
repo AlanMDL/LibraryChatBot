@@ -10,7 +10,10 @@ var ioStream = [ //start 2d array
 	],
 	[ //array[1] elements input key words
 		"Looking", "looking", "look", "Look", "Searching", "searching", "Search", "search",
-		"Booking", "booking", "Room", "room", "Study", "study",
+		"Booking", "booking", "Room", "room", "Study", "study", "recommending", "Recommending",
+		"recommend", "Recommend", "adventure", "sci-fi", "sci fi", "mystery", "fantasy", "romantic",
+		"romance", "thriller", 
+		//list genre's here as well ********************
 	],
 	[ // array[2] elements output if keywords triggered
 		"Alright, this is what I have found,"
@@ -57,21 +60,23 @@ function compareWords(word)
 			//nested if statements according to keywords found.
 			if(i > 7 && i < 14){
 				// related to booking rooms.
+				console.log("booking rooms");
 			}
 			else if (i <= 7){
 				// related to looking for a book.
-				searchBook();
+				//searchBook();
+				console.log("searching for a book");
 			}
-			else if (i >= 14){
+			else if (i >= 14 ){
 				// related to recommending a book.
-				recommendBook();
+				//recommendBook();
+				console.log("book recommendation");
 			}
-			else{
-				// didn't catch a keyword, ask another question.
+			else if (){
+				// for finding genre keyswords, call compareGenre();
 			}
 		}
 	}
-	
 }
 
 // new from here down.
@@ -80,6 +85,7 @@ function compareWords(word)
  *@param: no param
  *@Return: no return type
 */
+/*
 function recommendBook()
 {
 	console.log("Enter a genre or a few genres you are interested in");// prompt for genres
@@ -97,6 +103,8 @@ function recommendBook()
  *@param: the array of genres
  *@Return: Returns a book title based on the genres given.
 */
+
+/* --------------------
 function compareGenre(arrayOfGenres)
 {
 	// each book object should have a genre component, compare that to input.
@@ -104,7 +112,7 @@ function compareGenre(arrayOfGenres)
 	
 }
 
-
+/*
 // No clue what is going on here, I'll save this for last lol.
 function searchBook()
 {
