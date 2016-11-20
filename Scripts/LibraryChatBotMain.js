@@ -11,7 +11,7 @@ var ioStream = [ //start 2d array
 	[ //array[1] elements input key words
 		"Looking", "looking", "look", "Look", "Searching", "searching", "Search", "search",
 		"Booking", "booking", "Room", "room", "Study", "study", "recommending", "Recommending",
-		"recommend", "Recommend", "adventure", "sci-fi", "sci fi", "mystery", "fantasy", "romantic",
+		"recommend", "Recommend", /* index 18 */"adventure", "sci-fi", "sci fi", "mystery", "fantasy", "romantic",
 		"romance", "thriller", 
 		//list genre's here as well ********************
 	],
@@ -19,6 +19,7 @@ var ioStream = [ //start 2d array
 		"Alright, this is what I have found,"
 	]
 ]; // end of 2D array
+
 
 /*@Function: Function called when button is clicked. Stores input.
  *@param: no parameter
@@ -30,7 +31,6 @@ function myFunction() {
 	//document.getElementById("chatbox").innerHTML = ;
 }
 
-
 /*@Function: Splits up each word from the input and sends the word to compare.
  *@param: input Line received 
  *@Return: no return
@@ -39,6 +39,7 @@ function inputLine(input)
 {
 	var word;
     var array = input.split(" "); 	//Splits up each word from the input parameter into an array of strings.
+    
     for(var i = 0; i < array.length; i++)
     {
     	word = array[i]; // word pulled from the array of words
@@ -60,6 +61,7 @@ function compareWords(word)
 			//nested if statements according to keywords found.
 			if(i > 7 && i < 14){
 				// related to booking rooms.
+                //bookRoom();
 				console.log("booking rooms");
 			}
 			else if (i <= 7){
@@ -72,9 +74,15 @@ function compareWords(word)
 				//recommendBook();
 				console.log("book recommendation");
 			}
-			else if (){
-				// for finding genre keyswords, call compareGenre();
+			else if (i >= 18){
+				// related to comparing genres for a book.
+                //compareGenre();
+                console.log("Comparing Genres");
 			}
+            else{
+                //No function is called if no keywords are found
+                console.log("No Keywords Found");
+            }
 		}
 	}
 }
@@ -85,18 +93,39 @@ function compareWords(word)
  *@param: no param
  *@Return: no return type
 */
-/*
+
 function recommendBook()
 {
-	console.log("Enter a genre or a few genres you are interested in");// prompt for genres
+	var genreArray = console.log("Enter a genre or a few genres you are interested in");// prompt for genres
 	// read input for genres, possibly to store in an array easier to send as param.
-	var bookTitle = compareGenre(arrayOfGenres);// call compare genres
-	// 
-	do {
-		//grab info of book title by calling searchBook
-		searchBook(bookTitle);
-		//prompt if they liked the title or if we should recommend a new book.
-	} while(users input != yes)
+    var correctedGenreArray = genreArray.split("  ");//split the array into proper spacing
+
+	var matchedBooks = compareGenre(correctedGenreArray);// call compare genres
+
+	do{
+		//grab info of book titles by calling searchBook
+		var booksFound = searchBook(matchedBooks);
+
+        var response = console.log("Books Found: " + booksFound + ", do you like the title(s)?");
+        //prompt if they liked the title or if we should recommend a new book.
+
+        if(response == "yes" || response == "Yes")
+        {
+            break;
+        }
+        else if(response == "no" || response == "No");
+        {
+            var recommendBookResponse = console.log("Should we recommend a book then?");
+            
+            if(recommendBookResponse == "Yes" || recommendBookResponse == "yes"){
+                recommendBook();
+            }
+            else{
+                break;
+            }
+        }
+        else {}
+	}while(response != yes)
 }
 
 /*@Function: Compares genres that user is interested with books.
@@ -104,15 +133,24 @@ function recommendBook()
  *@Return: Returns a book title based on the genres given.
 */
 
-/* --------------------
-function compareGenre(arrayOfGenres)
+function compareGenre(input)
 {
 	// each book object should have a genre component, compare that to input.
-	// return book title.
-	
+	// return book titles.
+    var matchedBooks;
+    for(int i = 0; i < input.length; i++)
+    {
+        for(int j = 0; j < arrayOfBooks.length; j++)
+        {
+            if(input[i] == arrayOfBooks[j.genre])//if input is equal to any book object's genre
+            {
+                matchedBooks[i] = arrayOfBooks[j];//add the book to the matchedBooks array 
+            }
+        }
+    }
+    return (matchedBooks);
 }
 
-/*
 // No clue what is going on here, I'll save this for last lol.
 function searchBook()
 {
@@ -120,7 +158,6 @@ function searchBook()
     var array = someBook.split("  ");
     var matches = 0;
     var matchedBooks[100];
-
     for(int i = 0; i < array.length;i++)
     {
         for(int j = 0; j < bookArray.length;j++)
@@ -147,22 +184,14 @@ function searchBook()
    }
  }
 
-// Not sure about this function either. Will look at it later.	   
-function bookArray()
-{
-    var qrNumber = 0;
-    var genre = "";
-    var author = "";
-    var name = "";
-    var floor = 0;
-    var availability = true;
+function bookRoom{
+
 }
 
 /* TODO LIST
 Create a class that holds data variables about book information called bookArray
 Finish searchBook function
 Finish 
-
 	   
 //pseudocode notes for hackathon/////////////////////////////////////
 	   /*
