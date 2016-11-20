@@ -9,7 +9,8 @@ var ioStream = [ //start 2d array
 		"Hello Welcome! What can I do for you today?"
 	],
 	[ //array[1] elements input key words
-		"Looking", "looking", "look", "Look", "Searching", "searching", "Search", "search"
+		"Looking", "looking", "look", "Look", "Searching", "searching", "Search", "search",
+		"Booking", "booking", "Room", "room", "Study", "study",
 	],
 	[ // array[2] elements output if keywords triggered
 		"Alright, this is what I have found,"
@@ -53,25 +54,111 @@ function compareWords(word)
 	{
 		if(word == ioStream[KEYWORD][i]) //if the word is equal to a word from the input array
 		{
-			console.log("yo");
+			//nested if statements according to keywords found.
+			if(i > 7 && i < 14){
+				// related to booking rooms.
+			}
+			else if (i <= 7){
+				// related to looking for a book.
+				searchBook();
+			}
+			else if (i >= 14){
+				// related to recommending a book.
+				recommendBook();
+			}
+			else{
+				// didn't catch a keyword, ask another question.
+			}
 		}
 	}
 	
 }
+
+// new from here down.
+
+/*@Function: Prompts user to enter a few genres, and recommends a book according to that genre.
+ *@param: no param
+ *@Return: no return type
+*/
+function recommendBook()
+{
+	console.log("Enter a genre or a few genres you are interested in");// prompt for genres
+	// read input for genres, possibly to store in an array easier to send as param.
+	var bookTitle = compareGenre(arrayOfGenres);// call compare genres
+	// 
+	do {
+		//grab info of book title by calling searchBook
+		searchBook(bookTitle);
+		//prompt if they liked the title or if we should recommend a new book.
+	} while(users input != yes)
+}
+
+/*@Function: Compares genres that user is interested with books.
+ *@param: the array of genres
+ *@Return: Returns a book title based on the genres given.
+*/
+function compareGenre(arrayOfGenres)
+{
+	// each book object should have a genre component, compare that to input.
+	// return book title.
+	
+}
+
+
+// No clue what is going on here, I'll save this for last lol.
+function searchBook()
+{
+    var someBook = prompt("What book title are you looking for?");//prompts user and retrieves response
+    var array = someBook.split("  ");
+    var matches = 0;
+    var matchedBooks[100];
+
+    for(int i = 0; i < array.length;i++)
+    {
+        for(int j = 0; j < bookArray.length;j++)
+        {
+            if(array[i] == bookArray[j])
+            {
+                matches = matches + 1;
+                matchedBooks[i] = bookArray[j];
+            }
+        }
+    }
+    
+    if(matches > 1)
+    {    
+        console.log("There was more than 1 book found, outputting all matched books");
+        for(int i = 0; i < matchedBooks.length;i++)
+        {
+       	 	console.log(matchedBooks(i));       
+         }
+    }
+    else if (matches == 1)
+    {
+        console.log(matchedBooks[matches]); 
+   }
+ }
+
+// Not sure about this function either. Will look at it later.	   
+function bookArray()
+{
+    var qrNumber = 0;
+    var genre = "";
+    var author = "";
+    var name = "";
+    var floor = 0;
+    var availability = true;
+}
+
+/* TODO LIST
+Create a class that holds data variables about book information called bookArray
+Finish searchBook function
+Finish 
+
 	   
 //pseudocode notes for hackathon/////////////////////////////////////
 	   /*
 	   
-	   main function() {
-
-do while loop
-{
-	inputline function
-	prompt the user if they are finished?
-}
-	 inputline function splits up words
-	   send them to compareFunctione
-	
 	   comparewords function
 	   compares word to keywords in elements 1 of array
 	   if(book searching keyword)
