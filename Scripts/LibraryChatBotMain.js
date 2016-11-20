@@ -1,26 +1,31 @@
 const PROMPT = 0;
 const KEYWORD= 1;
 const OUTPUT = 2;
-function main()
-{
-	var ioStream = [ //start 2d array
-		[  //array[0] elements the prompts
-			"Hello, Welcome to the Library! Could I help you find a book?",
-			"Welcome to the Library! Are you looking for a book or shall I recommend one for you?",
-			"Hello Welcome! What can I do for you today?"
-		],
-		[ //array[1] elements input key words
-			"Looking", "looking", "look", "Look", "Searching", "searching", "Search", "search"
-		],
-		[ // array[2] elements output if keywords triggered
-			"Alright, this is what I have found,"
-		]
-	]; // end of 2D array
-	
-	
-	// read input here to send to inputLine to begin
-	inputLine("Hello I am looking for a book called Harry Potter");
+
+var ioStream = [ //start 2d array
+	[  //array[0] elements the prompts
+		"Hello, Welcome to the Library! Could I help you find a book?",
+		"Welcome to the Library! Are you looking for a book or shall I recommend one for you?",
+		"Hello Welcome! What can I do for you today?"
+	],
+	[ //array[1] elements input key words
+		"Looking", "looking", "look", "Look", "Searching", "searching", "Search", "search"
+	],
+	[ // array[2] elements output if keywords triggered
+		"Alright, this is what I have found,"
+	]
+]; // end of 2D array
+
+/*@Function: Function called when button is clicked. Stores input.
+ *@param: no parameter
+ *@Return: no return
+*/
+function myFunction() {
+	var input = document.getElementById("myText").value;
+	inputLine(input);
+	//document.getElementById("chatbox").innerHTML = ;
 }
+
 
 /*@Function: Splits up each word from the input and sends the word to compare.
  *@param: input Line received 
@@ -29,8 +34,8 @@ function main()
 function inputLine(input)
 {
 	var word;
-    var array = input.split("  "); 	//Splits up each word from the input parameter into an array of strings.
-    for(i = 0; i < input.length; i++)
+    var array = input.split(" "); 	//Splits up each word from the input parameter into an array of strings.
+    for(var i = 0; i < array.length; i++)
     {
     	word = array[i]; // word pulled from the array of words
     	compareWords(word); 
@@ -42,13 +47,13 @@ function inputLine(input)
  *@param: input Line received 
  *@Return: Undecided
 */
-function compareWords(word, ioStream)
+function compareWords(word)
 {
-	for(i = 0; i < ioStream.length[KEYWORD]; i++)
+	for(var i = 0; i < ioStream[KEYWORD].length; i++)
 	{
-		if(word == array[KEYWORD][i]) //if the word is equal tfo a word from the input array
+		if(word == ioStream[KEYWORD][i]) //if the word is equal to a word from the input array
 		{
-			//TODO:finish this if statement
+			console.log("yo");
 		}
 	}
 	
